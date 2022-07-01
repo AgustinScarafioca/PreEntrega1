@@ -59,17 +59,17 @@ const agregarAlCarrito = (id,quantity=1) =>{
     if(!product){
         return "El producto no existe"
     } else if (AllProducts.stock <= quantity){
-    return "No hay suficiente stock"
+        return "No hay suficiente stock"
     }
 
-    const productosEnCarrito = carro.find(p => p.id == id);
-    if(productosEnCarrito){
-    productosEnCarrito.quantity += quantity
+    const Cart = carro.find(p => p.id == id);
+    if(Cart){
+        productosEnCarrito.quantity += quantity
     } else{
-    carro.push ((new Cart(AllProducts,quantity)))
+        carro.push ((new Cart(Products,quantity)))
     }
     AllProducts.stock -= quantity;
-    return carro;
+        return carro;
 }
 
 console.table(agregarAlCarrito(1,5))
