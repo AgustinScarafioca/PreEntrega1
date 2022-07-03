@@ -57,16 +57,16 @@ class Cart{
 const agregarAlCarrito = (id,quantity=1) =>{
     const product = AllProducts.find(p => p.id == id)
     if(!product){
-        return "El producto no existe"
+        return "Error en el producto"
     } else if (AllProducts.stock <= quantity){
-        return "No hay suficiente stock"
+        return "No hay stock"
     }
 
-    const Cart = carro.find(p => p.id == id);
-    if(Cart){
+    const carrito = carro.find(p => p.id == id);
+    if(carrito){
         productosEnCarrito.quantity += quantity
     } else{
-        carro.push ((new Cart(Products,quantity)))
+        carro.push ((new Cart(AllProducts,quantity)))
     }
     AllProducts.stock -= quantity;
         return carro;
